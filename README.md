@@ -5,11 +5,19 @@
 </p>
 
 <p align="center">
- 
+  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol
+">
+    <img src="https://img.shields.io/badge/Status-Public%20Proposal-blue" alt="Status">
+  </a>
   <a href="https://creativecommons.org/licenses/by-sa/4.0/">
     <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License">
   </a>
- 
+  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/issues">
+    <img src="https://img.shields.io/badge/Issues-Welcome-brightgreen" alt="Issues">
+  </a>
+  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/stargazers">
+    <img src="https://img.shields.io/github/stars/schchit/Responsibility-Delegation-Protocol?style=social" alt="GitHub stars">
+  </a>
 </p>
 
 The **Responsibility Delegation Protocol (RDP)** is the protocol layer that records the fact of delegation. It is the pre-protocol of [HJS (Human Judgment System)](../README.md).
