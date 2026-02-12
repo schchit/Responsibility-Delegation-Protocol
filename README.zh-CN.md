@@ -4,6 +4,14 @@
   <strong>中文</strong> | <a href="README.md">English</a>
 </p>
 
+<p align="center">
+  
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+    <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License">
+  </a>
+  
+</p>
+
 **责任委托协议（RDP）** 是记录委托事实的协议层，为 [HJS（人类判断系统）](../README.zh-CN.md) 的前置协议。
 
 ---
