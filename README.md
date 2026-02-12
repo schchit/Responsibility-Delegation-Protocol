@@ -1,17 +1,57 @@
-# Responsibility Delegation Protocol (RDP) · 概念草案 v0.1
+# Responsibility Delegation Protocol (RDP)
 
-编辑：HJS协议发起人 
-日期： 2026.03  
-开源协议：CC BY-SA 4.0  
+<p align="center">
+  <a href="README.zh-CN.md">中文</a> | <strong>English</strong>
+</p>
 
----
-
-RDP 是 HJS 协议家族的第一个扩展协议。  
-它解决委托蒸发——决策权转移时，授权关系未被记录、不可追溯的问题。
-
-📄 [阅读完整草案](./rdp-concept.md) 
-🧩 [提交 Issue](https://github.com/schchit/rdp-concept/issues)  
+The **Responsibility Delegation Protocol (RDP)** is the protocol layer that records the fact of delegation. It is the pre-protocol of [HJS (Human Judgment System)](../README.md).
 
 ---
 
-Making automated systems more accountable, making human judgment more valuable.
+## What This Directory Contains
+
+### Positioning
+
+- **HJS** inserts a judgment layer before decision execution and records "who made the judgment."
+- **RDP** records "who has the authority to make this judgment and where that authority comes from"—i.e., the source and chain of delegation.
+- Permission systems answer "who has authority now" but not where it came from, why it was granted, for how long, or whether it can be revoked. **RDP fills the evidence-layer gap for delegation as a form of responsibility transfer.**
+
+### Core Problem
+
+**Entrusted Evaporation**: The delegation relationship is not recorded, or the record is unverifiable and untraceable, leading to a broken chain of responsibility.
+
+The documents illustrate this with three typical scenarios: oral authorization, subcontracting black hole, and system agent. In all three, delegation is not formally recorded, only permission status is checked at decision time (not permission source), and the source cannot be traced in audits.
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| Responsibility Delegation | A subject transfers its decision-making and judgment rights within a specific scope to another subject |
+| Client | The entity initiating the delegation |
+| Trustee | The entity accepting the delegation |
+| Entrustment Certificate | Data structure that records delegation behavior, used for verification, revocation, and auditing |
+| Delegation Chain | The sequence of valid delegation vouchers from the original responsible entity to the current executor |
+
+### Protocol Constraints (Summary)
+
+- **Structure cannot be bypassed**: Delegation must be completed via the RDP protocol; vouchers must be written to non-tamperable storage; no permission configuration path may exist that does not generate a delegation voucher.
+- **Two-way commitment**: Delegation must be signed and confirmed by both principal and trustee; unconfirmed vouchers are invalid.
+- **Explicit scope**: Delegation authority must define boundaries (decision type, threshold conditions, validity period, etc.).
+- **Revocable and auditable**: The principal may revoke at any time; the delegation chain must be fully traceable; the audit interface is open to compliance and regulatory parties.
+
+### Relation to HJS
+
+```
+Delegation Credential (RDP) → HJS Judgment Record
+```
+
+RDP does not depend on HJS and can be deployed independently in any system that needs to record delegation relationships.
+
+---
+
+## Document Index
+
+- **English (full text):** [responsibility-delegation-protocol-en.md](responsibility-delegation-protocol-en.md)
+- **中文（全文）:** [responsibility-delegation-protocol-zh-CN.md](responsibility-delegation-protocol-zh-CN.md)
+
+**Version:** v0.1 (Concept Draft) · **License:** CC BY-SA 4.0
