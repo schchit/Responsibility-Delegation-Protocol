@@ -1,13 +1,24 @@
 # 责任委托协议（RDP）
+
 <p align="center">
   <strong>中文</strong> | <a href="README.md">English</a>
 </p>
 
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Status-Draft-blue" alt="Status"></a>
-  <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Issues-Welcome-brightgreen" alt="Issues"></a>
-  <a href="#"><img src="https://img.shields.io/github/stars/hjs-spec/spec?style=social" alt="GitHub stars"></a>
+**协议名称：** 责任委托协议
+**版本：** v0.1（概念草案）
+**日期：** 2026年2月
+**编辑：** HJS编辑
+
+<p align="left">
+  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol">
+    <img src="https://img.shields.io/badge/Status-Draft-blue" alt="Status">
+  </a>
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+    <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License">
+  </a>
+  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/issues">
+    <img src="https://img.shields.io/badge/Issues-Welcome-brightgreen" alt="Issues">
+  </a>
 </p>
 
 责任委托协议（RDP）是一个记录委托事实的协议层，与 HJS 核心协议共同使用。
