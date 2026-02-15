@@ -3,7 +3,7 @@
 **Protocol Name:** Responsibility Delegation Protocol
 **Version:** v0.1 (Concept Draft)
 **Date:** February 2026
-**Editor:** HJS Protocol Initiator
+**Editor:** HJS Editor
 
 <p align="left">
   <a href="https://github.com/schchit/Responsibility-Delegation-Protocol">
