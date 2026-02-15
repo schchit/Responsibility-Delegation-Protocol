@@ -1,9 +1,13 @@
 # 责任委托协议（RDP）
 
+<p align="center">
+  <strong>中文</strong> | <a href="responsibility-delegation-protocol.md">English</a>
+</p>
+
 **协议名称：** 责任委托协议
 **版本：** v0.1（概念草案）
 **日期：** 2026年2月
-**编辑：** HJS协议编辑
+**编辑：** HJS编辑
 
 <p align="left">
   <a href="https://github.com/schchit/Responsibility-Delegation-Protocol">
