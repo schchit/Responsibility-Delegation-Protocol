@@ -1,5 +1,9 @@
 # Responsibility Delegation Protocol (RDP)
 
+<p align="center">
+  <a href="README.zh-CN.md">中文</a> | <strong>English</strong>
+</p>
+
 **Protocol Name:** Responsibility Delegation Protocol
 **Version:** v0.1 (Concept Draft)
 **Date:** February 2026
