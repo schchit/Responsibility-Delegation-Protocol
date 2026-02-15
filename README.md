@@ -57,9 +57,9 @@ text
 RDP can be deployed independently in any system that needs to record delegation relationships.
 
 ## Documents
+## 📄 Full Specification
 
-- [English (full text)](Responsibility-Delegation-Protocol/spec
-/responsibility-delegation-protocol.md)
-- [中文（全文）](responsibility-delegation-protocol-zh-CN.md)
+- [English Full Version](spec/CN-responsibility-delegation-protocol.md)
+- [Chinese Full Version](spec/责任委托协议.md)
 
 **Version:** v0.1 (Concept Draft) · **License:** CC BY-SA 4.0
