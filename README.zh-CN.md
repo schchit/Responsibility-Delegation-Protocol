@@ -1,73 +1,64 @@
-# Responsibility Delegation Protocol (RDP)
-
+# 责任委托协议（RDP）
 <p align="center">
   <strong>中文</strong> | <a href="README.md">English</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol
-">
-    <img src="https://img.shields.io/badge/Status-Public%20Proposal-blue" alt="Status">
-  </a>
-  <a href="https://creativecommons.org/licenses/by-sa/4.0/">
-    <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License">
-  </a>
-  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/issues">
-    <img src="https://img.shields.io/badge/Issues-Welcome-brightgreen" alt="Issues">
-  </a>
-  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/stargazers">
-    <img src="https://img.shields.io/github/stars/schchit/Responsibility-Delegation-Protocol?style=social" alt="GitHub stars">
-  </a>
+  <a href="#"><img src="https://img.shields.io/badge/Status-Draft-blue" alt="Status"></a>
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Issues-Welcome-brightgreen" alt="Issues"></a>
+  <a href="#"><img src="https://img.shields.io/github/stars/hjs-spec/spec?style=social" alt="GitHub stars"></a>
 </p>
 
-**责任委托协议（RDP）** 是记录委托事实的协议层，为 [HJS（人类判断系统）](../README.zh-CN.md) 的前置协议。
+责任委托协议（RDP）是一个记录委托事实的协议层，与 HJS 核心协议共同使用。
 
----
+## 概述
 
-## 本目录文档主要内容
+HJS 记录“谁执行了判断”。RDP 记录“谁有权执行此判断”以及“权从何来”。
 
-### 定位
+权限系统回答“现在谁有权”。它们不回答权力从何而来、为何授予、持续多久、能否撤销。RDP 通过提供委托的证据层填补这一空白。
 
-- **HJS** 在决策执行前插入判断层，记录“谁执行了判断”。
-- **RDP** 记录“谁有权执行此判断、权从何来”——即委托关系的来源与链条。
-- 权限系统只回答“现在谁有权”，不回答权从何来、为何授予、授予多久、能否撤回。**RDP 填补委托这一责任转移形式的证据层缺失。**
+## 核心问题
 
-### 核心问题
+**委托蒸发**：委托关系未被记录或无法验证，导致责任链断裂。
 
-**委托蒸发（Entrusted Evaporation）**：委托关系未被记录，或记录不可验证、不可追溯，导致责任链断裂。
+三类常见场景说明此问题：
+- 通过非正式渠道的口头授权
+- 授权链条无法追溯的转包关系
+- 系统自动转移权限但未记录授权规则
 
-文档通过三类典型场景说明问题：口头授权、转包黑洞、系统代理——共同点都是委托行为未形式化记录，决策时只校验权限状态不校验权限来源，审计时无法追溯。
+在这些场景中，委托发生时没有正式记录，决策只检查当前权限，审计时无法追溯权力来源。
 
-### 核心概念
+## 核心概念
 
-| 概念 | 说明 |
+| 术语 | 说明 |
 |------|------|
-| 责任委托 | 主体将特定范围内的决策判断权转移给另一主体 |
+| 责任委托 | 将特定范围内的决策权转移给另一主体 |
 | 委托人 | 发起委托的主体 |
 | 受托人 | 接受委托的主体 |
-| 委托凭证 | 记录委托行为的数据结构，用于验证、撤销、审计 |
-| 委托链 | 从原始责任主体到当前执行者之间，有效委托凭证构成的序列 |
+| 委托凭证 | 记录委托行为的数据结构 |
+| 委托链 | 从原始责任主体到当前执行者的凭证序列 |
 
-### 协议约束要点
+## 协议约束
 
-- **结构不可绕过**：委托须经 RDP 协议完成，凭证须写入不可篡改存储，不得提供不生成凭证的权限配置路径。
-- **双向承诺**：委托须委托人、受托人双方签名确认，未确认的委托凭证无效。
-- **显式范围**：委托权限须明确决策类型、阈值条件、有效期等边界。
-- **可撤销、可审计**：委托人可随时撤销；委托链须完整可追溯，审计接口向合规方、监管方开放。
+- **不可绕过**：委托必须通过 RDP 完成
+- **不可篡改存储**：凭证须写入不可篡改存储
+- **无绕过路径**：不得提供不生成凭证的权限配置方式
+- **双方确认**：委托须经委托人与受托人双方签名
+- **明确范围**：须明确定义决策类型、阈值、有效期等
+- **可撤销**：委托人可随时撤销委托
+- **可审计**：委托链须完整可追溯
 
-### 与 HJS 的关系
-
-```
+## 与 HJS 的关系
 委托凭证 (RDP) → HJS 判断记录
-```
 
-RDP 不依赖 HJS，可独立部署于任何需要记录委托关系的系统。
+text
 
----
+RDP 可独立部署于任何需要记录委托关系的系统。
 
 ## 文档索引
 
-- **English (full text):** [responsibility-delegation-protocol-en.md](responsibility-delegation-protocol-en.md)
-- **中文（全文）:** [responsibility-delegation-protocol-zh-CN.md](responsibility-delegation-protocol-zh-CN.md)
+- [English (full text)](responsibility-delegation-protocol-en.md)
+- [中文（全文）](responsibility-delegation-protocol-zh-CN.md)
 
-**Version:** v0.1 (Concept Draft) · **License:** CC BY-SA 4.0
+**版本：** v0.1（概念草案） · **许可证：** CC BY-SA 4.0
