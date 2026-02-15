@@ -1,17 +1,13 @@
 # Responsibility Delegation Protocol (RDP)
 
 **Protocol Name:** Responsibility Delegation Protocol
-
 **Version:** v0.1 (Concept Draft)
-
-**Date:** 2026.03
-
-**Editor:** HJS Sponsor
+**Date:** February 2026
+**Editor:** HJS Protocol Initiator
 
 <p align="left">
-  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol
-">
-    <img src="https://img.shields.io/badge/Status-Public%20Proposal-blue" alt="Status">
+  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol">
+    <img src="https://img.shields.io/badge/Status-Draft-blue" alt="Status">
   </a>
   <a href="https://creativecommons.org/licenses/by-sa/4.0/">
     <img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey" alt="License">
@@ -19,24 +15,15 @@
   <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/issues">
     <img src="https://img.shields.io/badge/Issues-Welcome-brightgreen" alt="Issues">
   </a>
-  <a href="https://github.com/schchit/Responsibility-Delegation-Protocol/stargazers">
-    <img src="https://img.shields.io/github/stars/schchit/Responsibility-Delegation-Protocol?style=social" alt="GitHub stars">
-  </a>
 </p>
 
 ---
 
 ## 0. Positioning
 
-HJS inserts a judgment layer before decision execution, making human supervision recordable and verifiable.
+HJS records verifiable human judgment before irreversible decisions. RDP records the source of that judgment authority — delegation.
 
-Where does the right of judgment come from? Delegation.
-
-The permission system answers "Who has the authority now".
-
-The permission system does not answer: where the authority comes from, why it is granted, how long it is granted for, and whether it can be revoked.
-
-**RDP is the protocol layer that records the fact of delegation.**
+Permission systems answer "who currently has access." They do not answer where that authority came from, why it was granted, how long it lasts, or whether it can be revoked. RDP provides a protocol layer for recording delegation facts.
 
 ---
 
@@ -44,122 +31,84 @@ The permission system does not answer: where the authority comes from, why it is
 
 ### 1.1 Definition
 
-**Entrusted Evaporation**: The entrustment relationship is not recorded, or the record is unverifiable and untraceable, resulting in the breakage of the responsibility chain.
+**Delegation Evaporation**: Delegation relationships are unrecorded or non‑verifiable, leading to broken accountability chains.
 
-### 1.2 Three Types of Scenarios
+### 1.2 Three Common Scenarios
 
-**Oral Authorization**
+**Verbal Authorization**
+A manager says in an instant message: "You'll handle approvals for me this week." The delegatee executes approvals. Three months later, a misjudgment occurs. The manager has left. System logs show the delegatee as the approver, but no record proves the approval authority came from the manager. Audit conclusion: the accountability chain breaks at the first delegation.
 
-The manager said in the instant message, "You'll handle the approvals for me this week."
+**Subcontracting Chain**
+An automaker delegates road‑test analysis to an outsourcer. The outsourcer sub‑delegates to freelancers. After an incident, the principal claims "the task was delegated," the outsourcer claims "we only managed," and the subcontractor has dissolved. Delegation relationships never entered any auditable system. Accountability evaporates completely in the subcontracting chain.
 
-The trustee executes the approval.
+**System‑Automated Delegation**
+A monitoring system detects operator timeout and automatically transfers decision authority to a backup operator. After an incident, investigation reveals the transfer rule was configured two years ago. The rule configurer has changed roles. No upstream approval record for the rule exists. Authority transfers occur without traceable delegation records.
 
-A misjudgment occurred three months later. The manager has since left the company.
+### 1.3 Structural Gap
 
-System logs show that the approver is the trustee, and there is no record to prove that the approval authority comes from the delegation.
+All three scenarios share the same structure:
 
-Audit Conclusion: The chain of responsibility broke at the first delegation.
+1. Delegation occurs.
+2. Delegation is not formally recorded.
+3. Decision execution checks only the permission state, not the permission source.
+4. Audits cannot trace the permission source.
 
-**Subcontracting Black Hole**
-
-Automobile manufacturers delegate road test analysis to outsourcing contractors.
-
-Subcontractor's secondary subcontracting.
-
-After the accident, the original principal claimed that "the task has been entrusted", the outsourcer claimed that "only management responsibility is assumed", and the subcontractor has been dissolved.
-
-The principal-agent relationship never entered the auditable system. Responsibility completely evaporated within the subcontracting sequence.
-
-**System Agent**
-
-The monitoring system detected that the operator had exceeded the time limit and automatically transferred the decision-making authority to the backup duty officer.
-
-Retrospective investigation after the incident revealed that the authority transfer rules were configured two years ago.
-
-The rule configurator has transferred jobs.
-
-The upstream approval record for approving this rule does not exist.
-
-Humans transfer the delegation authority to the system, and the system does not record its own source of delegation.
-
-### 1.3 Structural Defects
-
-Common Structure of the Three Types of Scenarios:
-
-- The delegation behavior occurs
-- The entrustment behavior has not been formally recorded
-- When making decisions, only the permission status is verified, and the permission source is not verified
-- During the audit, the source of permissions cannot be traced
-
-**In the current system architecture, delegation is the only form of responsibility transfer without an evidence layer.**
+In current system architectures, delegation is the only form of responsibility transfer without an evidence layer.
 
 ---
 
-## 2. Definition
+## 2. Core Concepts
 
-| Term | Definition |
-|------|------------|
-| **Responsibility Delegation** | A subject transfers its decision-making and judgment rights within a specific scope to another subject |
-| **Client** | The entity initiating the delegation |
-| **Trustee** | Entity accepting the commission |
-| **Entrustment Certificate** | Data structure for recording delegation behavior, used for verification, revocation, and auditing |
-| **Delegation Chain** | The sequence formed by valid delegation vouchers between the original responsible entity and the current executor |
-| **Entrusted Evaporation** | The principal-agent relationship is not recorded or the record is unverifiable, resulting in the interruption of liability tracing |
+| Term | Description |
+|------|-------------|
+| **Delegation** | Transfer of decision authority within a specific scope from one entity to another |
+| **Delegator** | Entity initiating the delegation |
+| **Delegatee** | Entity receiving the delegation |
+| **Delegation Credential** | Data structure recording the delegation act |
+| **Delegation Chain** | Sequence of credentials from original authority to current executor |
+| **Delegation Evaporation** | Delegation relationships unrecorded or non‑verifiable, breaking accountability chains |
 
-The definition only describes structural characteristics and does not presuppose the legitimate source of the delegation.
+Definitions describe structural characteristics only; they do not presuppose legal validity.
 
 ---
 
-## 3. Constraints
+## 3. Protocol Constraints
 
-### 3.1 Structure cannot be bypassed
+### 3.1 Non‑circumventable Structure
+- Delegation must use RDP
+- Every decision authority must be traceable to an original responsible entity or a valid delegation credential
+- Systems must not provide permission‑configuration paths that bypass credential generation
+- Delegation credentials must be written to an immutable storage layer
 
-- The delegation action must be completed via the RDP protocol.
-- Any decision-making authority must be traceable to the original responsible entity or valid delegation document
-- The system shall not provide a permission configuration path that does not generate a delegation voucher
-- Entrustment vouchers must be written into the non-tamperable storage layer
+*This constraint is not configurable.*
 
-**This constraint is not configurable.**
+### 3.2 Two‑Party Consent
+- Delegation requires signatures from both delegator and delegatee
+- Delegator signature grants authority
+- Delegatee signature accepts authority
+- Unsigned credentials are invalid
 
-If a bypass path exists, the credibility of all entrusted records will be reset to zero.
+### 3.3 Explicit Scope
+- Decision types
+- Threshold conditions
+- Validity period
 
-### 3.2 Two-way commitment
-
-The entrustment must be signed and confirmed by the trustee.
-
-- **Principal's Signature:** Granting Authority and Assuming Supervisory Responsibility
-- **Trustee's signature:** Accept authority and assume responsibility for execution
-
-Unconfirmed commission vouchers are invalid.
-
-### 3.3 Explicit Range
-
-The scope of delegation authority must clearly define its boundaries.
-
-**Minimum Required Fields:**
-
-- Decision Type
-- Threshold Condition
-- Validity Period
-
-Full power of attorney must be explicitly declared and should have a clearly defined validity period.
+*Full delegation must be explicitly declared and have a clear validity period.*
 
 ### 3.4 Revocable
-
-- The client may revoke the mandate at any time
-- The revocation action generates a revocation voucher, which is associated with the original authorization voucher
-- After the revocation takes effect, the permissions that depend on the delegation shall terminate within an acceptable time window
-- The effectiveness of decisions made during the communication delay period shall be agreed upon in advance by the principal and the trustee
+- Delegators may revoke at any time
+- Revocation generates a record linked to the original credential
+- After revocation, permissions terminate within an acceptable time window
+- Decision validity during propagation delay should be agreed in advance
 
 ### 3.5 Auditable
-
-- The delegation chain must be fully traceable
-- The audit interface is open to compliance parties and regulatory parties
-- Once the entrustment voucher is anchored, it cannot be deleted
+- Delegation chains must be fully traceable
+- Audit interfaces open to compliance and regulatory bodies
+- Credentials cannot be deleted once anchored
 
 ---
 
-## 4. Data Structure
+## 4. Data Structure (Speculative)
 
 ```json
 {
@@ -192,103 +141,73 @@ Full power of attorney must be explicitly declared and should have a clearly def
   }
 }
 ```
+Undetermined:
 
-**Undetermined:**
+Identity format (DID/email/AD)
 
-- Identity Identification Format (DID/email/AD)
-- Complexity of range expressions (AND/OR/nesting)
-- The entity that generates vouchers for system-automated delegation
+Scope expression complexity (AND/OR/nesting)
 
----
+Credential issuer for system‑automated delegation
 
-## 5. Location
+5. Position Relative to HJS
+text
+Delegation Credential (RDP) → HJS Judgment Record
+HJS: records who executed a judgment
 
-**RDP is the pre-protocol of HJS.**
+RDP: records who had authority to execute that judgment and where that authority came from
 
-```
-Delegation Credential → HJS Judgment Record
-```
+RDP does not depend on HJS and can be deployed independently in any system that needs to record delegation relationships.
 
-- **HJS:** Record "Who made the judgment"
-- **RDP:** Record "who has the authority to make this judgment and where the authority comes from"
+6. Open Issues
+6.1 Delegation Depth — Should delegation chains have a maximum length? If so, how many levels?
 
-RDP does not depend on HJS. It can be independently deployed in any system that needs to record the principal-agent relationship.
+6.2 Cross‑Domain Delegation — When Organization A authorizes someone in Organization B, how are credentials verified? Is a global trust anchor needed?
 
----
+6.3 Revocation Latency — After a revocation credential is generated, how long should cached credentials remain active? Are decisions made during the latency window valid?
 
-## 6. Open Questions
+6.4 Emergency Delegation — Should post‑event delegation credentials be allowed? What is an acceptable grace period? Can a post‑event credential retroactively cover decisions made during the emergency?
 
-### 6.1 Entrustment Depth
+6.5 System‑Automated Delegation — Can humans pre‑authorize delegation policies? How should such policies themselves be recorded?
 
-Should the delegation chain have a length limit? If so, how many levels?
+6.6 Identity Compatibility — Should RDP mandate a specific identity format? How can cross‑system interoperability be ensured if legacy identities (email, AD) are supported?
 
-### 6.2 Cross-Domain Delegation
+6.7 Role Semantics — The role field lacks a controlled vocabulary. How can different naming systems be mapped during cross‑organizational audits? Is a public role registry needed?
 
-When Organization A authorizes personnel from Organization B, how is the authorization certificate verified? Is a global trust anchor required?
+7. Open Source
+License: CC BY-SA 4.0
 
-### 6.3 Undo Delay
+Sample Code: To be contributed
 
-After the cancellation of voucher generation, within how long should the nodes of cached vouchers become invalid? Are the decisions made during the delay period valid?
+Anyone may implement commercial or non‑commercial products based on this draft. No license fees are required.
 
-### 6.4 Emergency Entrustment
+8. Participation
+Ways to contribute:
 
-Is it allowed to submit the entrusted vouchers after the fact? What is the time limit for reissuing them? Can the reissued vouchers cover the decisions made during the emergency period?
+Issue: Point out errors, omissions, or better designs
 
-### 6.5 System Delegation
+Pull Request: Revise text, add use cases, or provide sample code
 
-Can humans pre-authorize delegation strategies? In what data structure should the strategy itself be stored as evidence?
+Especially needed:
 
-### 6.6 Identity Compatibility
+Architects with experience in enterprise delegation/approval workflows
 
-Should a specific identity format be mandatory? How can cross-system delegation credentials be ensured to be mutually recognized?
+Legal professionals familiar with electronic signature laws and rules of evidence
 
-### 6.7 Role Identification
+Practitioners who have handled cross‑domain delegation compliance
 
-role field values lack a unified vocabulary. During cross-organizational audits, how can we map role permissions from different naming systems? Is a public role registry needed?
-
-### 6.8 Role Identifiers
-
-The current role field uses uncontrolled strings (e.g., "senior_risk_officer"). When auditing across organizations, role permissions from different naming systems are difficult to map.
-Open Issue: Should future versions migrate to URI or DID formats? Is a public role registry needed? Who should maintain it?
-
----
-
-## 7. Open Source
-
-**License Text:** CC BY-SA 4.0
-
-**Example code:** To be contributed
-
----
-
-## 8. Participation
-
-**Contribution Method:**
-
-- **Issue:** Point out errors, omissions, or better designs
-- **Pull Request:** Modify text, supplement use cases, and provide sample code
-
----
-
-## 9. Protocol Family
-
+9. Protocol Family
 RDP is the first extension protocol of the HJS Protocol Family.
 
-**Planned extensions:**
+Planned extensions:
 
-- **Responsibility Termination Statement (RTS)** — Formalizing when and how responsibility ends, preventing infinite liability.
-- **Responsibility Conflict Resolution Framework (RCRF)** — Computable attribution of responsibility when multiple parties are involved.
+Responsibility Termination Statement (RTS) — Records when and how responsibility ends
 
-These are **not active drafts**. They are identified gaps. We welcome discussion before formalization.
+Responsibility Conflict Resolution Framework (RCRF) — Provides structured evidence for responsibility attribution when multiple parties are involved
 
-**Special Needs:**
+These are not active drafts. They are identified gaps. We welcome discussion before formalization.
 
-- Architects with experience in enterprise commissioned approval practices
-- Legal practitioners familiar with the Electronic Signature Law and Evidence Rules
-- Practitioners who have dealt with cross-domain delegation compliance issues
+GitHub / Issues / CC BY-SA 4.0
 
----
+RDP v0.1
 
-**GitHub / Issues / CC BY-SA 4.0**
 
-*Making automated systems more accountable, making human judgment more valuable.*
