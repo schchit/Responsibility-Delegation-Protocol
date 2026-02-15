@@ -67,9 +67,10 @@ text
 
 RDP 可独立部署于任何需要记录委托关系的系统。
 
-## 文档索引
+## 📄 完整规范
 
-- [English (full text)](responsibility-delegation-protocol-en.md)
-- [中文（全文）](responsibility-delegation-protocol-zh-CN.md)
+查看完整协议规范：
+- [英文完整版](spec/responsibility-delegation-protocol.md)
+- [中文完整版](spec/责任委托协议.md)
 
 **版本：** v0.1（概念草案） · **许可证：** CC BY-SA 4.0
